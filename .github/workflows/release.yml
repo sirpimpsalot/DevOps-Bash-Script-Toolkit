@@ -1,0 +1,29 @@
+name: Release & Tag
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Release Notes
+        id: notes
+        run: |
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          if [ -f CHANGELOG.md ]; then
+            awk '/^## /{p=1} p' CHANGELOG.md | head -n 50 >> $GITHUB_ENV
+          else
+            echo "No changelog found." >> $GITHUB_ENV
+          fi
+          echo "EOF" >> $GITHUB_ENV
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: ${{ env.RELEASE_NOTES }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

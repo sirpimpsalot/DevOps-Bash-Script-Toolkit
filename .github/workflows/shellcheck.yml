@@ -1,4 +1,4 @@
-name: ShellCheck Lint
+name: ShellCheck Lint & Test Matrix
 
 on:
   push:
@@ -11,16 +11,25 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, centos-latest, alpine-latest]
     steps:
       - uses: actions/checkout@v4
       - name: Install ShellCheck
         run: |
           if [[ "${{ runner.os }}" == "macOS" ]]; then
-            brew install shellcheck
-          else
-            sudo apt-get update && sudo apt-get install -y shellcheck
+            brew install shellcheck bats-core
+          elif [[ "${{ runner.os }}" == "Linux" ]]; then
+            if grep -qi alpine /etc/os-release; then
+              apk add --no-cache shellcheck bats
+            elif grep -qi centos /etc/os-release; then
+              yum install -y epel-release && yum install -y ShellCheck bats
+            else
+              sudo apt-get update && sudo apt-get install -y shellcheck bats
+            fi
           fi
       - name: Run ShellCheck
         run: |
           find . -type f -name '*.sh' -exec shellcheck --shell=bash {} +
+      - name: Run Bats Tests
+        run: |
+          bats tests/
