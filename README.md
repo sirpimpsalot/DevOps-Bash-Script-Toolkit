@@ -15,6 +15,57 @@ A modular, POSIX-compliant toolkit of Bash scripts for infrastructure automation
 
 ---
 
+## When and Where to Use These Scripts
+
+This toolkit is designed for a variety of DevOps, SRE, and platform engineering scenarios. Below are practical examples of where and when to use each script category:
+
+- **Infrastructure Automation**
+  - Use in CI/CD pipelines to automate Terraform deployments and ensure safe, repeatable infrastructure changes.
+  - Run on developer machines or build servers to standardize infrastructure provisioning.
+  - Employ rollback features in production to minimize downtime during failed infrastructure changes.
+
+- **Kubernetes Management**
+  - Schedule cleanup scripts as CronJobs in your cluster to keep namespaces tidy and avoid resource leaks.
+  - Use during incident response to quickly remove failed jobs or pods.
+  - Integrate into GitOps workflows for automated cluster hygiene.
+
+- **Container Management**
+  - Run on CI/CD runners or build agents to keep Docker environments clean and prevent disk exhaustion.
+  - Use in developer environments to automate cleanup of unused images and volumes.
+  - Schedule as a cron job on production hosts to maintain healthy container infrastructure.
+
+- **Monitoring**
+  - Deploy as part of server bootstrapping to provide lightweight, scriptable monitoring and alerting.
+  - Integrate with external alerting systems (e.g., Slack, email) for custom notifications.
+  - Use in test environments to validate resource usage and service health.
+
+- **Security**
+  - Automate the creation and rotation of Kubernetes secrets from .env files during deployments.
+  - Use in CI/CD to inject secrets securely into clusters without manual handling.
+  - Employ as part of compliance and audit workflows to ensure secrets are managed as code.
+
+- **Backups**
+  - Schedule regular backups to S3 for disaster recovery and business continuity.
+  - Use before major deployments or migrations to ensure data safety.
+  - Integrate with monitoring scripts to alert on backup failures.
+
+- **Utilities**
+  - Automate log rotation on servers to prevent disk space issues and maintain compliance.
+  - Use in combination with monitoring scripts for proactive maintenance.
+
+- **CI/CD**
+  - Automate build, tagging, and deployment steps in your CI/CD pipelines for consistent, repeatable releases.
+  - Use autotagging to enforce semantic versioning based on commit messages.
+
+These scripts are suitable for:
+- Production and staging environments
+- Developer workstations
+- CI/CD runners (GitHub Actions, GitLab CI, Jenkins, etc.)
+- Kubernetes clusters (as CronJobs or part of GitOps flows)
+- Any environment where automation, reliability, and security are priorities
+
+---
+
 ## Folder Structure
 
 | Folder           | Purpose                                      |
