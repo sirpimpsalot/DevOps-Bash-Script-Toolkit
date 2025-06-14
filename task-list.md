@@ -48,15 +48,15 @@ A THE END OF EVERY PHASE - PERFORM A GIT CYCLE "ADD, COMMIT, PUSH"
 ---
 
 ## 📋 Phase 3: Documentation & Additional Scripts (Due: 2025-06-28)
-- [ ] Expand `README.md` (overview, usage, contributing)
-- [ ] Add `SECURITY.md`, `CHANGELOG.md`, script doc templates
-- [ ] Implement 5 more scripts (10 total, with tests/docs):
-    - [ ] `ci-cd/autotag.sh`
-    - [ ] `ci-cd/build_deploy.sh`
-    - [ ] `monitoring/check_service_health.sh`
-    - [ ] `security/env_to_k8s_secrets.sh`
-    - [ ] `utilities/log_rotate.sh`
-- [ ] Expand Bats-core tests for all scripts
+- [x] Expand `README.md` (overview, usage, contributing)
+- [x] Add `SECURITY.md`, `CHANGELOG.md`, script doc templates
+- [x] Implement 5 more scripts (10 total, with tests/docs):
+    - [x] `ci-cd/autotag.sh`
+    - [x] `ci-cd/build_deploy.sh`
+    - [x] `monitoring/check_service_health.sh`
+    - [x] `security/env_to_k8s_secrets.sh`
+    - [x] `utilities/log_rotate.sh`
+- [x] Expand Bats-core tests for all scripts
 - [ ] In-script documentation for all scripts
 
 ---
