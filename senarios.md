@@ -1,14 +1,8 @@
-**How to proceed:**
-1. Create a new file named `senarios.md` in your project root.
-2. Copy and paste the following content into that file:
-
----
-
 # Script Usage Scenarios and Implementation Steps
 
 This document outlines when and why you would use each script in this toolkit, and provides step-by-step instructions for implementing each script to resolve common DevOps issues.
 
----
+
 
 ## 1. `utilities/log_rotate.sh`
 **Scenario:**
