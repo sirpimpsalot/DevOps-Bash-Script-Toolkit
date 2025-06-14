@@ -1,0 +1,26 @@
+name: ShellCheck Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  shellcheck:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ShellCheck
+        run: |
+          if [[ "${{ runner.os }}" == "macOS" ]]; then
+            brew install shellcheck
+          else
+            sudo apt-get update && sudo apt-get install -y shellcheck
+          fi
+      - name: Run ShellCheck
+        run: |
+          find . -type f -name '*.sh' -exec shellcheck --shell=bash {} +

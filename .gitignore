@@ -1,0 +1,17 @@
+# Node, Python, macOS, and Bash artifacts
+node_modules/
+.DS_Store
+*.pyc
+__pycache__/
+.env
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+*.out
+*.test
+coverage/
+# ShellCheck and test outputs
+shellcheck-results.xml
+bats-results.xml
